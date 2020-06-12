@@ -1,0 +1,29 @@
+{
+  "name": "@code/asker",
+  "version": "0.0.1",
+  "description": "a simple web http request tool",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "typings": "types/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:coloration/asker.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "babel-loader": "^8.0.6",
+    "jest": "^24.9.0",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0"
+  },
+  "scripts": {
+    "build:window": "node_modules/.bin/webpack-cli --config webpack.window.js",
+    "test": "jest"
+  },
+  "author": "Wang.Binyu",
+  "license": "MIT"
+}
