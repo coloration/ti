@@ -1,0 +1,102 @@
+import { action } from '@storybook/addon-actions'
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
+import { SelfPaginationTable } from './selfPaginationTable'
+import {
+  tableColCenterRender, 
+  tableColDefRender,  
+  tableColLeftRender, 
+  tableColRightRender,  
+  tableColNumRightRender, 
+  tableColNumCenterRender,  
+  tableColShortRender,  
+} from './tableColumnRender'
+import {
+  tableMapperWithOrder
+} from './tableFunction'
+
+import { Table } from 'antd'
+import './index.css'
+
+<Meta title="Component|表格" />
+
+## SelfPaginationTable 自分页表格
+
+
+### Type
+
+`Component`
+
+### Props
+
+``` ts
+export interface ISelfPaginationTableProps<RecordType> extends TableProps<RecordType> {
+  pageSize?: number
+}
+```
+
+<Preview>
+  <Story name="自分页表格">
+    <SelfPaginationTable 
+      pageSize={10}
+      dataSource={Array.from({ length: 30 }).map((_, i) => ({ id: i + 1, age: Math.ceil(Math.random() * 100)}))}>
+      <Table.Column dataIndex="id" title="ID" />
+      <Table.Column dataIndex="age" title="年龄" />
+    </SelfPaginationTable>
+  </Story>
+</Preview>
+
+## TableColumnRender 表格列渲染
+
+### Type
+
+`Render Function`
+
+|name|parameter|desc|
+|:---|:---|:---|
+|`tableColDefRender`|`(t: any)`|`t` 如果为 `undefined` 或者 `null` 则显示 `--`, 下面均依赖此函数|
+|`tableColShortRender`|`(t: any, maxLength = 10)`|超过 `maxLength` 会显示 toolTip |
+|`tableColCenterRender`|`(t: any)`|内容居中|
+|`tableColRightRender`|`(t: any)`|内容居右 需求: 有时会表头居中但文字对齐类型不为居中|
+|`tableColLeftRender`|`(t: any)`|内容居左|
+|`tableColNumRender`|`(t: any)`|对数字进行千分位切分|
+|`tableColNumCenterRender`|`(t: any)`|内容居中|
+|`tableColNumRightRender`|`(t: any)`|内容居右|
+|`tableColNumLeftRender`|`(t: any)`|内容居左|
+
+
+## TableFunction 
+
+### Type
+
+`Function`
+
+|name|parameter|desc|
+|:---|:---|:---|
+|`tableMapperWithOrder`|`({ page = 1, pageSize = 10, field = '$order'}, any[])`||
+
+<Preview>
+  <Story name="表格列渲染">
+    <SelfPaginationTable 
+      dataSource={tableMapperWithOrder(
+        { page: 2, pageSize: 30 },
+        [
+          { id: 123, name: '花落知多少', count: 500000 },
+          { id: 234, name: null, count: 500000 },
+          { id: 769, name: 0, count: 5000.3248 },
+          { id: 356, name: '夜来风雨声', count: 700000 },
+          { id: 4789, name: '春眠不觉晓,处处闻啼鸟,夜来风雨声,花落知多少', count: 700000 },
+        ]
+      )}
+      size="middle"
+    >
+      <Table.Column dataIndex="$order" title="auto order" render={ tableColCenterRender } />
+      <Table.Column dataIndex="id" title="text center" render={ tableColCenterRender } />
+      <Table.Column key="name_default" dataIndex="name" title="text default --" render={ tableColDefRender } />
+      <Table.Column key="name_left" dataIndex="name" title="text left"  render={tableColLeftRender} />
+      <Table.Column key="name_right" dataIndex="name" title="text right"  render={tableColRightRender} />
+      <Table.Column key="num_right" dataIndex="count" title="num right"  render={tableColNumRightRender} />
+      <Table.Column key="num_center" dataIndex="count" title="num center"  render={tableColNumCenterRender} />
+      <Table.Column key="name_short" width={100} dataIndex="name" title="name short"  render={tableColShortRender} />
+    </SelfPaginationTable>
+  </Story>
+</Preview>

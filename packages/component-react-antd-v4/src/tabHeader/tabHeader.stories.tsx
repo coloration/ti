@@ -1,9 +1,12 @@
 import React from 'react'
 // import { action } from '@storybook/addon-actions'
 import { TabHeader } from './index'
+// import notes from './tabHeader.md'
+
 
 export default {
   title: 'Component | Tab Header',
+  parameters: { notes: '123456' }
 };
 
 export const Demo = () => {

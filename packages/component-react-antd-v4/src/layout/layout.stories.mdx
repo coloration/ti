@@ -1,0 +1,127 @@
+import { action } from '@storybook/addon-actions'
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
+import { StretchLayout } from './stretchLayout'
+import { ColumnDirectionLayout } from './columnDirectionLayout'
+import { StretchCardLayout } from './stretchCardLayout'
+import { ResponsiveLayout } from './responsiveLayout'
+import './index.css'
+
+
+<Meta title="Component|布局" />
+
+## ColumnDirectionLayout 纵向布局
+
+子元素使用 `flex: 1` 样式,即可纵向填充布局容器. 此容器使用 `flex-direction: columns` 样式
+
+### Note
+
+由于布局元素的特殊性质, 请切换到左上角 `Canvas` 选项卡下查看
+
+### Type
+
+`Component`
+
+### Props
+
+``` ts
+export interface IColumnDirectionLayoutProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+```
+
+
+<Preview>
+  <Story name="纵向布局">
+    <ColumnDirectionLayout style={{ height: 300 }}>
+      header
+      <div style={{ flex: 1, background: 'steelblue' }}>
+        layout content, height => 300px - header
+      </div>
+    </ColumnDirectionLayout>
+  </Story>
+</Preview>
+
+
+## StretchLayout 延展布局
+
+基于 ColumnDirectionLayout 根据元素在文档流中的起始位置计算出 body 的剩余高度, 并通过 minHeight 样式填充
+
+### Type
+
+`Component`
+
+### Props
+
+``` ts
+interface IStretchLayoutProps extends IColumnDirectionLayoutProps {
+  bottom?: number
+}
+```
+
+
+<Preview>
+  <Story name="延展布局">
+    <div>
+      header
+      <StretchLayout style={{ background: 'orange' }}>
+        layout content, height - window.innerHeight - header
+      </StretchLayout>
+    </div>
+  </Story>
+</Preview>
+
+## StretchCardLayout 卡片延展布局
+
+基于 ColumnDirectionLayout 根据元素在文档流中的起始位置计算出 body 的剩余高度, 并通过 minHeight 样式填充
+
+### Type
+
+`Component`
+
+### Props
+
+``` ts
+interface IStretchCardLayoutProps extends IColumnDirectionLayoutProps {
+  bottom?: number,
+  cardProps?: CardProps,
+  contentProps?: IColumnDirectionLayoutProps
+}
+```
+
+
+<Preview>
+  <Story name="卡片延展布局">
+    <div>
+      <div> header </div>
+      <StretchCardLayout>
+        card layout content, , height - window.innerHeight - header 
+      </StretchCardLayout>
+    </div>
+  </Story>
+</Preview>
+
+
+## ResponsiveLayout 弹性布局
+
+
+### Type
+
+`Component`
+
+### Props
+
+``` ts
+export interface IResponsiveLayoutProps extends ColProps {
+  rowProps?: RowProps,
+  asideContent?: ReactNode
+}
+```
+
+
+<Preview>
+  <Story name="弹性布局">
+    <div>
+      <ResponsiveLayout asideContent={<div>aside content</div>}>
+        <div style={{ height: 300, background: 'pink' }}> layout content </div>
+      </ResponsiveLayout>
+    </div>
+  </Story>
+</Preview>

@@ -1,0 +1,40 @@
+import { action } from '@storybook/addon-actions'
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
+import { Button } from './index'
+import { OperationButton } from './operationButton'
+import { Card, Divider } from 'antd'
+import { DownloadOutlined } from '@ant-design/icons'
+
+<Meta title="Component|按钮" />
+
+# OperationButton 操作按钮
+
+### Type
+
+`Component`
+
+### Props
+
+``` ts
+export interface IOperationButton extends ButtonProps {
+  icon?: ReactNode,
+  tooltipProps?: TooltipProps,
+}
+```
+
+<Preview>
+  <Story name="操作按钮">
+    <Card>
+      <OperationButton onClick={action('clicked')}>下载</OperationButton>
+      |
+      <OperationButton 
+        tooltipProps={{ placement: 'right' }}
+        onClick={action('clicked')} 
+        icon={<DownloadOutlined />}>
+        下载
+      </OperationButton>
+      |
+      <OperationButton disabled onClick={action('clicked')}>下载</OperationButton>
+    </Card>
+  </Story>
+</Preview>

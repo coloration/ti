@@ -1,0 +1,51 @@
+import { action } from '@storybook/addon-actions'
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
+import { formComponentRepeatRender } from './formRender'
+import { Select, Card, Radio } from 'antd'
+
+
+<Meta title="Component|表单" />
+
+# formComponentRepeatRender 批量渲染表单项
+
+### Type
+
+`render Function`
+
+### Props
+
+``` ts
+export interface IPlainOption<T = any> {
+  name: string,
+  value: T,
+  disabled?: boolean
+}
+
+export type FormComponentRepeatOption = {
+  nameField: string,
+  valueField: string,
+  component: ReactNode,
+  locale: PlainObject<string>
+}
+
+export function formComponentRepeatRender<T = IPlainOption> (data: T[], option: FormComponentRepeatOption) {}
+```
+
+<Preview>
+  <Story name="批量渲染子组件">
+    <Card>
+      <Select style={{ width: 200 }} value={100000}>
+        { formComponentRepeatRender(
+          [{ name: '北京', value: 100000 }, { name: '上海', value: 200000 }]
+        ) }
+      </Select>
+      <div></div>
+      <Radio.Group value={100000}>
+        {formComponentRepeatRender(
+          [{ city: '北京', value: 100000 }, { city: '上海', value: 200000 }],
+          { nameField: 'city', component: Radio }
+        )}
+      </Radio.Group>
+    </Card>
+  </Story>
+</Preview>

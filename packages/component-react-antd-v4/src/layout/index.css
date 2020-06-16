@@ -1,0 +1,13 @@
+.cra-column-direction-layout {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.cra-responsive-layout__content {
+  margin-bottom: 1rem;
+}
+
+.cra-responsive-layout__aside {
+  padding-bottom: 1rem;
+}
