@@ -1,8 +1,8 @@
 {
   "name": "@component/react-antd-v4",
-  "version": "2.0.1-alpha.0",
-  "main": "dist/index.js",
-  "es": "esm/index.js",
+  "version": "2.0.1-alpha.4",
+  "main": "esm/index.js",
+  "module": "esm/index.js",
   "typings": "./types/index.d.ts",
   "scripts": {
     "tsc": "rm -rf ./esm & rm -rf ./types & tsc",
@@ -25,5 +25,6 @@
     "rollup": "^2.16.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-uglify": "^6.0.4"
-  }
+  },
+  "gitHead": "6257b8a0182f7077634ef306d248daddcb9f02af"
 }

@@ -15,7 +15,7 @@ export type FormComponentRepeatOption = {
   locale: PlainObject<string>
 }
 
-export function formComponentRepeatRender<T = IPlainOption> (data: T[], option: FormComponentRepeatOption) {
+export function formComponentRepeatRender<T = IPlainOption> (data: T[], option?: Partial<FormComponentRepeatOption>) {
 
   const opt = Object.assign({
     nameField: 'name',

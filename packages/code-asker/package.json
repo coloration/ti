@@ -16,5 +16,6 @@
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-uglify": "^6.0.4"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "6257b8a0182f7077634ef306d248daddcb9f02af"
 }
