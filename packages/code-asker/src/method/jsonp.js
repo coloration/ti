@@ -1,4 +1,4 @@
-import { jsonpAdapter } from '../adapter'
+import { jsonpAdapter } from '../adapter/index'
 import { isStr } from '../util/func'
 export default function jsonp (url, query, conf) {
   

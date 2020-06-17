@@ -1,41 +1,34 @@
 {
   "name": "@code/kit",
   "version": "0.0.1",
-  "main": "dist/index.js",
-  "module": "es/index.js",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
   "typings": "types/index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:coloration/kit.git"
-  },
-  "author": "WangBinyu <406279919@qq.com>",
-  "license": "MIT",
-  "description": "",
   "scripts": {
-    "build:lib": "rm -rf ./lib & rm -rf types & tsc",
-    "build:dist": "webpack",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "build": "rm -rf types & tsc & rollup -c"
+  },
+  "dependencies": {
+    "d3-format": "^1.4.3",
+    "html2canvas": "^1.0.0-rc.5"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
-    "@babel/preset-typescript": "^7.6.0",
     "@types/d3-format": "^1.3.1",
     "@types/jest": "^25.2.3",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
     "jest": "^26.0.1",
+    "rollup": "^2.16.0",
+    "rollup-jest": "^0.0.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-uglify": "^6.0.4",
     "terser-webpack-plugin": "^2.3.5",
     "ts-jest": "^26.0.0",
     "ts-loader": "^5.3.3",
-    "typescript": "^3.3.4000",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
+    "typescript": "^3.3.4000"
   },
-  "dependencies": {
-    "d3-format": "^1.4.3",
-    "html2canvas": "^1.0.0-rc.5"
-  }
+  "license": "ISC"
 }

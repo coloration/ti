@@ -1,6 +1,7 @@
 {
   "name": "@component/charts",
   "version": "0.0.1",
+  "private": true,
   "description": "> TODO: description",
   "author": "WangBinyu <406279919@qq.com>",
   "homepage": "",
