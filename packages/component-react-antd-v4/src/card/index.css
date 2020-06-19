@@ -1,0 +1,72 @@
+.cra-panel-card {
+  box-sizing: border-box;
+  border-radius: 2px;
+  background: #fff;
+  font-size: 14px;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  transform: .4s ease all;
+  box-shadow: 0 2px 4px #eee;
+}
+
+.cra-panel-card:hover {
+  box-shadow: 0 2px 10px #ddd;
+}
+
+.cra-panel-card__fullscreen {
+  position: fixed !important;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100% !important;
+  height: 100% !important;
+  margin: auto !important;
+}
+
+.cra-panel-card_header {
+  padding: 0 12px 0 8px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.cra-panel-card_header-content {
+  flex: 1;
+}
+
+.cra-panel-card_title {
+  font-size: 1.2em;
+  line-height: 1.2em;
+  font-weight: 700;
+  border-left: 3px solid #1890ff;
+  padding-left: 10px;
+  margin-right: 10px;
+}
+
+.cra-panel-card_title .anticon {
+  margin-left: 4px;
+  font-size: 14px;
+}
+
+
+.cra-panel-card_body {
+  flex: 1;
+  padding: 0 12px 10px 8px;
+}
+
+.cra-panel-card_body__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cra-panel-card_footer {
+
+}
+
+.cra-panel-card_expand {
+  margin-left: 1em;
+  cursor: pointer;
+}

@@ -1,36 +1,48 @@
 import React, { ReactNode } from 'react'
-import { PlainObject, isPrimitive } from '@code/kit'
+import { PlainObject, isPrimitive, isDefind } from '@code/kit'
 import { Select } from 'antd'
+import { IPlainOption } from '../shared'
 
-export interface IPlainOption<T = any> {
-  name: string,
-  value: T,
-  disabled?: boolean
-}
 
 export type FormComponentRepeatOption = {
-  nameField: string,
-  valueField: string,
-  component: ReactNode,
-  locale: PlainObject<string>
+  pairs: PlainObject<string>
+  locale: PlainObject<string>,
+  component: ReactNode
 }
 
-export function formComponentRepeatRender<T = IPlainOption> (data: T[], option?: Partial<FormComponentRepeatOption>) {
+export function componentRepeatRender<T = IPlainOption> (
+  data: T[], 
+  option?: Partial<FormComponentRepeatOption>) {
+  
+  option = option || {}
 
-  const opt = Object.assign({
-    nameField: 'name',
-    valueField: 'value',
-    component: Select.Option,
-  }, option)
+  const pairs: PlainObject<string> = Object.assign({
+    'children': 'name',
+    'value': 'value',
+    'disabled': 'disabled'
+  }, option.pairs)
 
-  const OptElement: any = opt.component
+  const ComponentElement: any = option.component || Select.Option
 
   return data.map((d: any, i: number) => {
-    const name = isPrimitive(d) ? d : d[opt.nameField]
-      return (
-        <OptElement key={String(i)} value={d[opt.valueField]} disabled={d.disabled}>
-          { opt.locale ? opt.locale[name] : name }
-        </OptElement>
-      )
-    })
+    const props: any = {}
+
+    if (isPrimitive(d)) {
+      props.children = d
+    }
+    else {
+      Object.keys(pairs).forEach(k => {
+        props[k] = d[pairs[k]]
+      })
+    }
+
+    // i18n
+    if (isPrimitive(props.children) && isDefind(option.locale)) {
+      props.children = option.locale[props.children]
+    }
+
+    return (
+      <ComponentElement key={String(i)} {...props} />
+    )
+  })
 }

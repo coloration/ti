@@ -45,7 +45,7 @@ export interface ISelfPaginationTableProps<RecordType> extends TableProps<Record
   </Story>
 </Preview>
 
-## TableColumnRender 表格列渲染
+## TableColumnRender 表格列渲染工具函数
 
 ### Type
 
@@ -64,7 +64,7 @@ export interface ISelfPaginationTableProps<RecordType> extends TableProps<Record
 |`tableColNumLeftRender`|`(t: any)`|内容居左|
 
 
-## TableFunction 
+## TableFunction 表格工具函数
 
 ### Type
 
@@ -72,10 +72,10 @@ export interface ISelfPaginationTableProps<RecordType> extends TableProps<Record
 
 |name|parameter|desc|
 |:---|:---|:---|
-|`tableMapperWithOrder`|`({ page = 1, pageSize = 10, field = '$order'}, any[])`||
+|`tableMapperWithOrder`|`({ page = 1, pageSize = 10, field = '$order'}, any[])`|为数组中的每个元素添加一个`$order` 字段 |
 
 <Preview>
-  <Story name="表格列渲染">
+  <Story name="表格渲染">
     <SelfPaginationTable 
       dataSource={tableMapperWithOrder(
         { page: 2, pageSize: 30 },

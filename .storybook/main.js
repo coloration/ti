@@ -34,13 +34,13 @@ module.exports = {
       ['@code/kit', '../packages/code-kit/src'],
       ['@code/asker', '../packages/code-asker/src'],
       ['@code/use-react', '../packages/code-use-react/src'],
+      ['@code/micro', '../packages/code-micro/src'],
     ]
 
     aliasPairs.forEach(p => {
       config.resolve.alias[p[0]] = path.resolve(__dirname, p[1])
     })
 
-    console.log(config.resolve.alias)
     return config
   },
 };

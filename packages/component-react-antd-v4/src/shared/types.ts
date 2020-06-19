@@ -8,3 +8,9 @@ export enum TablePageSize {
 }
 
 export const TABLE_DEFAULT = '--'
+
+export interface IPlainOption<T = any> {
+  name: string,
+  value: T,
+  disabled?: boolean
+}

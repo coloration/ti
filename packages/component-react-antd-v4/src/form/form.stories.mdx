@@ -1,12 +1,15 @@
 import { action } from '@storybook/addon-actions'
 import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
-import { formComponentRepeatRender } from './formRender'
-import { Select, Card, Radio } from 'antd'
+import { componentRepeatRender } from './formRender'
+import { DraggableBox } from './draggableBox'
+import { Draggable } from './draggable' 
+import { DraggableContainer } from './draggableContainer'
+import { Select, Card, Radio, Menu, Dropdown, Tag } from 'antd'
 import './index.css'
 
 <Meta title="Component|表单" />
 
-# formComponentRepeatRender 批量渲染表单项
+## componentRepeatRender 组件批量渲染函数
 
 ### Type
 
@@ -22,30 +25,76 @@ export interface IPlainOption<T = any> {
 }
 
 export type FormComponentRepeatOption = {
-  nameField: string,
-  valueField: string,
-  component: ReactNode,
-  locale: PlainObject<string>
+  pairs: PlainObject<string>
+  locale: PlainObject<string>,
+  component: ReactNode
 }
 
-export function formComponentRepeatRender<T = IPlainOption> (data: T[], option: FormComponentRepeatOption) {}
-```
 
+export function componentRepeatRender<T = IPlainOption> (data: T[], option?: FormComponentRepeatOption) {}
+
+```
 <Preview>
-  <Story name="批量渲染子组件">
+  <Story name="组件批量渲染函数">
     <Card>
       <Select style={{ width: 200 }} value={100000}>
-        { formComponentRepeatRender(
+        { componentRepeatRender(
           [{ name: '北京', value: 100000 }, { name: '上海', value: 200000 }]
         ) }
       </Select>
-      <div></div>
+      <hr/>
       <Radio.Group value={100000}>
-        {formComponentRepeatRender(
+        { componentRepeatRender(
           [{ city: '北京', value: 100000 }, { city: '上海', value: 200000 }],
-          { nameField: 'city', component: Radio }
+          { pairs: { children: 'city' }, component: Radio }
         )}
       </Radio.Group>
+      <hr/>
+      <Dropdown overlay={
+        <Menu>
+          { componentRepeatRender(
+            [{ name: '北京', value: 100000 }, { name: '上海', value: 200000 }],
+            { pairs: { key: 'value' }, component: Menu.Item }
+          ) }
+        </Menu>
+      }>
+        <a>城市</a>
+      </Dropdown>
+      
     </Card>
   </Story>
 </Preview>
+
+
+## DraggableTagList 可拖拽标签列表
+
+### Type
+
+`Component`
+
+### Props
+
+
+<Preview>
+  <Story name="可拖拽标签列表">
+    <Card>
+      <DraggableBox 
+        data={
+          [{ name: '北京', value: 100000 }, { name: '上海', value: 200000 }, { name: '天津', value: 300000 }, { name: '重庆', value: 400000 }]
+        } 
+      />
+      
+      <div></div>
+      <Draggable>
+        <Tag>123123123123</Tag>
+      </Draggable>
+      {/* <DraggableBox 
+        data={
+          [{ name: '北京', value: 100000 }, { name: '上海', value: 200000 }, { name: '天津', value: 300000 }, { name: '重庆', value: 400000 }]
+        } 
+      /> */}
+      <DraggableContainer />
+    </Card>
+  </Story>
+</Preview>
+

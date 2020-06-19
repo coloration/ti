@@ -1,0 +1,44 @@
+import { action } from '@storybook/addon-actions'
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
+import { PanelCard } from './index'
+import './index.css'
+
+<Meta title="Component|卡片" />
+
+## PanelCard 面板卡片
+
+### Type
+
+`Component`
+
+### Props
+
+``` ts
+export interface PanelCardProps {
+  title: ReactNode,
+  intro: string,
+  headerContent: any,
+  footer: any,
+  expand: boolean,
+  bodyStyle: any,
+  loading: boolean,
+  bodyCenter: boolean,
+  [key: string]: any
+}
+```
+
+<Preview>
+  <Story name="面板卡片">
+    <PanelCard 
+      title="近90日淮安降水情况" 
+      intro="每日降水计量由早6时至次日6时"
+      headerContent={<div style={{ background: '#f0f0f0' }}>自定义头部区域</div>}
+      bodyStyle={{ height: 200 }}
+      bodyCenter
+      expand
+      footer={<div style={{ background: '#f0f0f0' }}>自定义底部内容</div>}
+    >
+      Card Content
+    </PanelCard>
+  </Story>
+</Preview>
