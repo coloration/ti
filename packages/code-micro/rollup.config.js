@@ -15,14 +15,20 @@ export default ['umd'].map(k => {
   return {
     input: 'esm/index.js',
     output: {
-      name: 'kit',
+      name: 'micro',
       file: conf.file,
-      format: conf.format
+      format: conf.format,
+      globals: {
+        react: 'React'
+      }
     },
     plugins: [
       resolve(), // 解析三方依赖， 如果三方没有 module 类型到处还要配合 commonjs plugin
       babel(),
       uglify(), 
+    ],
+    external: [
+      'react'
     ]
   }
 })

@@ -4,7 +4,7 @@ import { Select } from 'antd'
 import { IPlainOption } from '../shared'
 
 
-export type FormComponentRepeatOption = {
+export type ComponentRepeatOption = {
   pairs: PlainObject<string>
   locale: PlainObject<string>,
   component: ReactNode
@@ -12,7 +12,7 @@ export type FormComponentRepeatOption = {
 
 export function componentRepeatRender<T = IPlainOption> (
   data: T[], 
-  option?: Partial<FormComponentRepeatOption>) {
+  option?: Partial<ComponentRepeatOption>) {
   
   option = option || {}
 

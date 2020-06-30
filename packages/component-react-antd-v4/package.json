@@ -1,6 +1,6 @@
 {
   "name": "@component/react-antd-v4",
-  "version": "2.0.1-alpha.4",
+  "version": "2.0.3",
   "main": "esm/index.js",
   "module": "esm/index.js",
   "typings": "./types/index.d.ts",
@@ -12,7 +12,7 @@
     "@ant-design/icons": "^4.2.1",
     "@code/kit": "^0.0.1",
     "@code/use-react": "^0.0.1",
-    "antd": "^4.3.3",
+    "antd": "^4.3.5",
     "lodash": "^4.17.15",
     "react": "^16.13.1"
   },

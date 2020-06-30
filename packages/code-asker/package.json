@@ -1,6 +1,6 @@
 {
   "name": "@code/asker",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha.1",
   "main": "dist/index.js",
   "module": "src/index.js",
   "typings": "types/index.d.ts",

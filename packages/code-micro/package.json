@@ -1,14 +1,17 @@
 {
   "name": "@code/micro",
-  "version": "0.0.2",
-  "main": "lib/index.js",
+  "version": "1.0.0-alpha.2",
+  "main": "esm/index.js",
   "module": "esm/index.js",
   "typings": "types/index.d.ts",
   "scripts": {
     "test": "jest --coverage",
-    "build": "rm -rf types & tsc & rollup -c"
+    "build": "rm -rf ./types & tsc"
   },
   "dependencies": {
+    "@code/asker": "^1.0.0-alpha.1",
+    "@code/kit": "^0.0.2",
+    "react": "^16.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
@@ -28,5 +31,5 @@
     "ts-loader": "^5.3.3",
     "typescript": "^3.3.4000"
   },
-  "license": "ISC",
+  "license": "ISC"
 }

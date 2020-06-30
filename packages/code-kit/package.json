@@ -1,7 +1,7 @@
 {
   "name": "@code/kit",
   "version": "0.0.2",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "module": "esm/index.js",
   "typings": "types/index.d.ts",
   "scripts": {

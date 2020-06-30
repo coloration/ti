@@ -59,7 +59,6 @@ export function DraggableSelect <T> ({
     const opts = options.filter(opt => inValue.includes(opt.value))
 
     return componentRepeatRender(opts, {
-      specNameField: 'children',
       component: Tag
     })
 

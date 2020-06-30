@@ -18,14 +18,24 @@ const dirs = fs.readdirSync(rootPath)
 .filter(d => !d.startsWith('_'))
 .filter(d => fs.lstatSync(rootPath + d).isDirectory())
 
+const files = []
+
 dirs.forEach(dir => {
   const filename = dir + '/index.css'
-
-  fs.readFile(rootPath + filename, (err, file) => {
-    if (err) return 
+  
+  try {
+    const file = fs.readFileSync(rootPath + filename)
+    files.push(file)
     fs.writeFileSync(distPath + filename, file)
-  })
+  }
+  catch (e) {
+    // 没有 css 
+    // 或者写入失败
+  }
 })
+
+const styleFile = Buffer.concat(files)
+fs.writeFileSync(distPath + 'index.css', styleFile)
 
 
 // const configs = dirs.map(dir => {
